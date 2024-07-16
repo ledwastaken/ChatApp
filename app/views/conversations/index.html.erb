@@ -1,12 +1,15 @@
-<div>
-  <label><%= current_user.email %></label>
-</div>
-<%= form_tag('/', method: :get) do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Rechercher par nom..." %>
-  <%= submit_tag "Rechercher", name: nil %>
-<% end %>
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.username %></li>
+<h1>Conversations</h1>
+
+<% @users.each do |user| %>
+  <%= form_with(url: conversations_path, method: :post) do |form| %>
+    <%= form.hidden_field :sender_id, value: current_user.id %>
+    <%= form.hidden_field :receiver_id, value: user.id %>
+    <%= form.submit "Start conversation with #{user.username}" %>
   <% end %>
-</ul>
+<% end %>
+
+<h2>Your Conversations</h2>
+<% @conversations.each do |conversation| %>
+  <% other_user = conversation.sender == current_user ? conversation.receiver : conversation.sender %>
+  <%= link_to other_user.username, conversation_path(conversation) %>
+<% end %>

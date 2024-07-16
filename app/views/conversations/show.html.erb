@@ -1,0 +1,19 @@
+<h1>Conversation with <%= @conversation.receiver == current_user ? @conversation.sender.username : @conversation.receiver.email %></h1>
+
+<div>
+  <% @messages.each do |message| %>
+    <% if message.user %>
+      <p>
+        <strong><%= message.user.username %>:</strong>
+        <%= message.body %>
+        <br/>
+        sent at <%= message.created_at %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with(model: [@conversation, @message], local: true) do |form| %>
+  <%= form.text_area :body %>
+  <%= form.submit "Send" %>
+<% end %>
