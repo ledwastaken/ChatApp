@@ -20,8 +20,10 @@
         <%= link_to t('devise.sessions.sign_in'), new_registration_path(resource_name) %>
       <% end %>
     </nav>
-    <%= yield %>
-    <nav>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <nav class="language-links">
       <%= link_to 'Français', set_locale_link('fr') %>
       <%= link_to 'English', set_locale_link('en') %>
     </nav>
