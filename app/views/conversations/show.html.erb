@@ -1,4 +1,4 @@
-<h1>Conversation with <%= @conversation.receiver == current_user ? @conversation.sender.username : @conversation.receiver.email %></h1>
+<h1><%= t('conversation_with') %> <%= @conversation.receiver == current_user ? @conversation.sender.username : @conversation.receiver.username %></h1>
 
 <div>
   <% @messages.each do |message| %>
@@ -7,13 +7,13 @@
         <strong><%= message.user.username %>:</strong>
         <%= message.body %>
         <br/>
-        sent at <%= message.created_at %>
+        <%= l(message.created_at, format: :default) %>
       </p>
     <% end %>
   <% end %>
 </div>
 
-<%= form_with(model: [@conversation, @message], local: true) do |form| %>
+<%= form_with(model: [@conversation, @message], url: conversation_messages_path(@conversation, locale: I18n.locale), local: true) do |form| %>
   <%= form.text_area :body %>
-  <%= form.submit "Send" %>
+  <%= form.submit t('send') %>
 <% end %>

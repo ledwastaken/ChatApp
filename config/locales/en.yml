@@ -28,4 +28,15 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      default: "%m/%d/%Y %I:%M %p"
+  users: "Users"
+  start_conversation_with: "Start conversation with %{user}"
+  conversations: "Conversations"
+  your_conversations: "Your conversations"
+  conversation_with: "Conversation with"
+  send: "Send"
+  forgot_your_password: "Forgot your password?"
+  remember_me: "Remember me"
+  message_sent: "Sent at"

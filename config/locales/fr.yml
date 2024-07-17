@@ -1,0 +1,13 @@
+fr:
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+  users: "Utilisateurs"
+  start_conversation_with: "Commencer une conversation avec %{user}"
+  conversations: "Conversations"
+  your_conversations: "Vos conversations"
+  conversation_with: "Conversation avec"
+  send: "Envoyer"
+  forgot_your_password: "Mot de passe oublié?"
+  remember_me: "Se rappeler de moi"
+  message_sent: "Envoyé à"

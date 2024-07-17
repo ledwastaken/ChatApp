@@ -1,15 +1,15 @@
-<h1>Conversations</h1>
+<h2><%= t('users') %></h2>
 
 <% @users.each do |user| %>
   <%= form_with(url: conversations_path, method: :post) do |form| %>
     <%= form.hidden_field :sender_id, value: current_user.id %>
     <%= form.hidden_field :receiver_id, value: user.id %>
-    <%= form.submit "Start conversation with #{user.username}" %>
+    <%= form.submit t('start_conversation_with', user: user.username) %>
   <% end %>
 <% end %>
 
-<h2>Your Conversations</h2>
+<h2><%= t('your_conversations') %></h2>
 <% @conversations.each do |conversation| %>
   <% other_user = conversation.sender == current_user ? conversation.receiver : conversation.sender %>
-  <%= link_to other_user.username, conversation_path(conversation) %>
+  <%= link_to other_user.username, conversation_path(I18n.locale, conversation) %>
 <% end %>
